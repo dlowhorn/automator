@@ -1,0 +1,12 @@
+{
+    "name": "dlowhorn/automator",
+    "description": "Workstation automation API",
+    "minimum-stability": "stable",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Daniel Lowhorn",
+            "email": "daniel.ltwp@gmail.com"
+        }
+    ]
+}
