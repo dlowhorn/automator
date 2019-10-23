@@ -8,7 +8,19 @@
 
 namespace Server\Controller;
 
-class NotFoundController extends AbstractController  implements ExceptionReportingInterface {
+class NotFoundController extends AbstractController implements ControllerInterface, ExceptionReportingInterface {
+
+    /** @var \Exception|null */
+    protected $exception;
+
+    public function index()
+    {
+        if ($this->exception == null) {
+            $this->exception = new \Exception('Unknown error!');
+        }
+
+        $this->exception($this->exception);
+    }
 
     public function exception(\Exception $e)
     {

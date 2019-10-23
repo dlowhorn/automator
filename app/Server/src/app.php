@@ -6,6 +6,8 @@
  * Time: 2:00 PM
  */
 
+namespace Server;
+
 use Symfony\Component\Routing\Matcher\Dumper\CompiledUrlMatcherDumper;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;

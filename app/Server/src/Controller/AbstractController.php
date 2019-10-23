@@ -23,4 +23,9 @@ abstract class AbstractController {
         $this->params = $params;
     }
 
+    public function redirect()
+    {
+
+    }
+
 }
