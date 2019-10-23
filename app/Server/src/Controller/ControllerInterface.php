@@ -10,9 +10,6 @@ namespace Server\Controller;
 
 interface ControllerInterface {
 
-    /**
-     * @return string|
-     */
-    public function index();
+    function index();
 
 }

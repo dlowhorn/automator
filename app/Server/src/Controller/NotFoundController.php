@@ -22,11 +22,11 @@ class NotFoundController extends AbstractController implements ControllerInterfa
         $this->exception($this->exception);
     }
 
-    public function exception(\Exception $e)
-    {
-        echo '<p style="font-weight:bold;">Ran into a problem here</p> <br /><pre>';
-        print_r($e);
-        echo '</pre>';
-    }
+//    public function exception(\Exception $e)
+//    {
+//        echo '<p style="font-weight:bold;">Ran into a problem here</p> <br /><pre>';
+//        print_r($e);
+//        echo '</pre>';
+//    }
 
 }

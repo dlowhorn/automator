@@ -53,6 +53,7 @@ class GetPayloadsController extends AbstractController implements ControllerInte
             'payload' => $filename,
             'code'    => $code,
             'data'    => $data,
+            'memory'  => round(memory_get_peak_usage(false) / 1024 / 1024, 3),
         ]);
 
     }

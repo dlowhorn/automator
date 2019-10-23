@@ -2,27 +2,20 @@
 
 require_once __DIR__ . '/../public/../../../vendor/autoload.php';
 
-use Server\Controller\ControllerInterface;
-use Server\Framework\Router;
-use Symfony\Component\Routing;
-use Symfony\Component\HttpFoundation\Request;
-use Server\Controller;
-
-$request = Request::createFromGlobals();
-$routes  = include __DIR__ . '/../src/app.php';
-$router  = new Router($routes);
-
-ob_start();
+use Server\Framework\App;
 
 try {
 
-    ($router->mapRequestToController($request))->index();
+    (new App())->handleRequest();
 
-} catch (Routing\Exception\ResourceNotFoundException $exception) {
+} catch (\Exception $e) {
 
     http_response_code(500);
-    echo (new Controller\NotFoundController())->exception($exception);
+    echo '<h1>Ran into a problem here</h1><br /><h4>' . $e->getMessage() . '</h4><br /><pre>' . $e->getTraceAsString() . '</pre>';
+
+} catch (Throwable $e) {
+
+    http_response_code(500);
+    echo '<h1>We threw a tire</h1><br /><h4>' . $e->getMessage() . '</h4><br /><pre>' . $e->getTraceAsString() . '</pre>';
 
 }
-
-echo ob_get_clean();

@@ -12,7 +12,9 @@ class HomeController extends AbstractController implements ControllerInterface {
 
     public function index()
     {
-        echo 'here at home';
+        $this->renderTemplate('home', [
+            'time' => time(),
+        ]);
     }
 
 }

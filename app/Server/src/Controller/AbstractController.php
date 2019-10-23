@@ -8,10 +8,15 @@
 
 namespace Server\Controller;
 
+use Server\Framework\PhpTemplateEngine;
+use Server\Framework\TemplateEngineInterface;
 
 abstract class AbstractController {
 
     protected $params;
+
+    /** @var TemplateEngineInterface */
+    protected $templateEngine;
 
     /**
      * AbstractController constructor.
@@ -20,12 +25,33 @@ abstract class AbstractController {
      */
     public function __construct(array $params = [])
     {
-        $this->params = $params;
+        $this->params         = $params;
+        $this->templateEngine = new PhpTemplateEngine();
     }
 
-    public function redirect()
+    /**
+     * @param string $file
+     * @param array  $parameters
+     */
+    public function renderTemplate($file, $parameters = [])
     {
+        echo $this->templateEngine->render($file, $parameters);
+    }
 
+    /**
+     * @param string $content
+     */
+    public function raw($content)
+    {
+        echo $content;
+    }
+
+    /**
+     * @param \Exception $exception
+     */
+    public function exception(\Exception $exception)
+    {
+        $this->renderTemplate('exception', ['exception' => $exception]);
     }
 
 }

@@ -15,6 +15,6 @@ interface ExceptionReportingInterface {
      *
      * @return mixed
      */
-    public function exception(\Exception $e);
+    function exception(\Exception $e);
 
 }

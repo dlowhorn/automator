@@ -12,13 +12,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing;
 use Server\Controller\ControllerInterface;
 
-class Router {
+class Router implements RouterInterface {
 
+    /** @var TemplateEngineInterface */
+    protected $templateEngine;
     protected $routes;
 
     public function __construct($routes)
     {
-        $this->routes = $routes;
+        $this->routes         = $routes;
+        $this->templateEngine = new PhpTemplateEngine();
     }
 
     /**
