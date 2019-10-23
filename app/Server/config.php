@@ -9,9 +9,12 @@
 return [
 
     'routes' => [
-        'GET' => [
+        'GET'  => [
             'home'         => '/',
             'get-payloads' => '/get-payloads/{token}',
+        ],
+        'POST' => [
+            'send-payloads' => '/receive-payload/{token}',
         ],
     ],
 

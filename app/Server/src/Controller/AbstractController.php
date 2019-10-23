@@ -47,6 +47,14 @@ abstract class AbstractController {
     }
 
     /**
+     * @param mixed $content
+     */
+    public function json($content)
+    {
+        echo json_encode($content);
+    }
+
+    /**
      * @param \Exception $exception
      */
     public function exception(\Exception $exception)
