@@ -8,12 +8,14 @@
 
 namespace Server\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class NotFoundController extends AbstractController implements ControllerInterface, ExceptionReportingInterface {
 
     /** @var \Exception|null */
     protected $exception;
 
-    public function index()
+    public function handleRequest(Request $request)
     {
         if ($this->exception == null) {
             $this->exception = new \Exception('Unknown error!');

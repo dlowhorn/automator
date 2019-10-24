@@ -17,11 +17,13 @@ class Router implements RouterInterface {
     /** @var TemplateEngineInterface */
     protected $templateEngine;
     protected $routes;
+    protected $explicitRouteControllers;
 
-    public function __construct($routes)
+    public function __construct($routes, $explicitRouteControllers)
     {
-        $this->routes         = $routes;
-        $this->templateEngine = new PhpTemplateEngine();
+        $this->routes                   = $routes;
+        $this->explicitRouteControllers = $explicitRouteControllers;
+        $this->templateEngine           = new PhpTemplateEngine();
     }
 
     /**
@@ -52,7 +54,7 @@ class Router implements RouterInterface {
     public function mapRouteNameToController($routeName, $parameters) : ControllerInterface
     {
 
-        $controllerClassName = 'Server\\Controller\\' . str_replace(' ', '', ucwords(str_replace('-', ' ', $routeName))) . 'Controller';
+        $controllerClassName = $this->explicitRouteControllers[$routeName] ? : 'Server\\Controller\\' . str_replace(' ', '', ucwords(str_replace('-', ' ', $routeName))) . 'Controller';
 
         /** @var ControllerInterface $controller */
         $controller = new $controllerClassName($parameters);

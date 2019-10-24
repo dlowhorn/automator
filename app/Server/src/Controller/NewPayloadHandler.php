@@ -8,8 +8,9 @@
 
 namespace Server\Controller;
 
-class ReceivePayloadController extends AbstractController implements ControllerInterface {
+use Symfony\Component\HttpFoundation\Request;
 
+class NewPayloadHandler extends AbstractController implements ControllerInterface {
 
     private $token;
     private $payloadPath;
@@ -26,12 +27,13 @@ class ReceivePayloadController extends AbstractController implements ControllerI
         $this->payloadPath = __DIR__ . '/../../payloads';
     }
 
-    public function index()
+    public function handleRequest(Request $request)
     {
 
         $this->json([
             'success' => TRUE,
             'token'   => $this->token,
+            'data'    => $request->request->get('data'),
         ]);
 
     }

@@ -8,7 +8,9 @@
 
 namespace Server\Controller;
 
-class GetPayloadsController extends AbstractController implements ControllerInterface {
+use Symfony\Component\HttpFoundation\Request;
+
+class PayloadRequestHandler extends AbstractController implements ControllerInterface {
 
     public const SUCCESS = 1;
     public const NOT_FOUND = 2;
@@ -29,10 +31,8 @@ class GetPayloadsController extends AbstractController implements ControllerInte
         $this->payloadPath = __DIR__ . '/../../payloads';
     }
 
-    public function index()
+    public function handleRequest(Request $request)
     {
-
-        header('Content-Type: application/json');
 
         $filename = $this->token . '.json';
         $payload  = $this->payloadPath . '/' . $filename;
@@ -49,7 +49,7 @@ class GetPayloadsController extends AbstractController implements ControllerInte
 
         }
 
-        echo json_encode([
+        $this->json([
             'payload' => $filename,
             'code'    => $code,
             'data'    => $data,

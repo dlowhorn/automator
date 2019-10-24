@@ -8,9 +8,11 @@
 
 namespace Server\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class HomeController extends AbstractController implements ControllerInterface {
 
-    public function index()
+    public function handleRequest(Request $request)
     {
         $this->renderTemplate('home', [
             'time' => time(),

@@ -8,14 +8,6 @@
 
 return [
 
-    'routes' => [
-        'GET'  => [
-            'home'         => '/',
-            'get-payloads' => '/get-payloads/{token}',
-        ],
-        'POST' => [
-            'send-payloads' => '/receive-payload/{token}',
-        ],
-    ],
+    'routes' => include 'routes.php',
 
 ];

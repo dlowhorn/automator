@@ -19,6 +19,7 @@ class App {
 
     private $config;
     private $routes;
+    private $explicitRouteControllers;
 
     /** @var RouterInterface */
     private $router;
@@ -38,22 +39,26 @@ class App {
     private function configureRouting() : App
     {
 
-        $routeCollection = new RouteCollection();
+        $explicitRouteControllers = [];
+        $routeCollection          = new RouteCollection();
 
         if (isset($this->config['routes'])) {
-            foreach ($this->config['routes'] as $method => $routes) {
+            foreach ($this->config['routes'] as $route => $config) {
 
-                foreach ($routes as $name => $route) {
-                    $newRoute = new Route($route);
-                    $newRoute->setMethods($method);
-                    $routeCollection->add($name, $newRoute);
+                $routeName = $config['name'] ? : $route;
+                $newRoute  = new Route($route);
+                $newRoute->setMethods($config['methods'] ? : 'GET');
+
+                if (isset($config['controller'])) {
+                    $explicitRouteControllers[$routeName] = $config['controller'];
                 }
 
+                $routeCollection->add($routeName, $newRoute);
             }
         }
 
         $this->routes = (new CompiledUrlMatcherDumper($routeCollection))->getCompiledRoutes();
-        $this->router = new Router($this->routes);
+        $this->router = new Router($this->routes, $explicitRouteControllers);
 
         return $this;
 
@@ -67,7 +72,7 @@ class App {
         try {
 
             $request = Request::createFromGlobals();
-            ($this->router->mapRequestToController($request))->index();
+            ($this->router->mapRequestToController($request))->handleRequest($request);
 
         } catch (ResourceNotFoundException $exception) {
 

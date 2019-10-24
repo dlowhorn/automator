@@ -8,8 +8,10 @@
 
 namespace Server\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+
 interface ControllerInterface {
 
-    function index();
+    function handleRequest(Request $request);
 
 }
