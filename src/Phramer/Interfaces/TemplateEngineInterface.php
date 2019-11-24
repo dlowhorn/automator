@@ -6,7 +6,7 @@
  * Time: 3:50 PM
  */
 
-namespace Server\Framework;
+namespace Phramer\Interfaces;
 
 
 interface TemplateEngineInterface {

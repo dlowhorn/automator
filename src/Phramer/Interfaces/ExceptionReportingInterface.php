@@ -6,7 +6,7 @@
  * Time: 2:14 PM
  */
 
-namespace Server\Controller;
+namespace Phramer\Interfaces;
 
 interface ExceptionReportingInterface {
 

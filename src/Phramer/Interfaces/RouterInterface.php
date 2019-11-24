@@ -6,9 +6,9 @@
  * Time: 3:47 PM
  */
 
-namespace Server\Framework;
+namespace Phramer\Interfaces;
 
-use Server\Controller\ControllerInterface;
+use Phramer\Interfaces\ControllerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 interface RouterInterface {

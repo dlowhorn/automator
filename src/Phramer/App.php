@@ -6,9 +6,9 @@
  * Time: 4:09 PM
  */
 
-namespace Server\Framework;
+namespace Phramer;
 
-use Server\Controller\NotFoundController;
+use Phramer\Interfaces\RouterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\Dumper\CompiledUrlMatcherDumper;
@@ -27,7 +27,7 @@ class App {
     public function __construct()
     {
 
-        $this->config = include __DIR__ . '/../../config.php';
+        $this->config = include __DIR__ . '/../../config/config.php';
         $this->configureRouting();
 
     }

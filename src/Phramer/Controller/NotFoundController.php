@@ -6,8 +6,10 @@
  * Time: 2:13 PM
  */
 
-namespace Server\Controller;
+namespace Phramer\Controller;
 
+use Phramer\Interfaces\ControllerInterface;
+use Phramer\Interfaces\ExceptionReportingInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class NotFoundController extends AbstractController implements ControllerInterface, ExceptionReportingInterface {

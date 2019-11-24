@@ -6,8 +6,9 @@
  * Time: 2:13 PM
  */
 
-namespace Server\Controller;
+namespace Phramer\Controller;
 
+use Phramer\Interfaces\ControllerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController implements ControllerInterface {

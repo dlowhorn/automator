@@ -6,10 +6,10 @@
  * Time: 2:51 PM
  */
 
-namespace Server\Controller;
+namespace Phramer\Controller;
 
-use Server\Framework\PhpTemplateEngine;
-use Server\Framework\TemplateEngineInterface;
+use Phramer\PhpTemplateEngine;
+use Phramer\Interfaces\TemplateEngineInterface;
 
 abstract class AbstractController {
 

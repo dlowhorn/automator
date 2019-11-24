@@ -6,14 +6,14 @@
  * Time: 2:13 PM
  */
 
-namespace Server\Controller;
+namespace Phramer\Controller;
 
+use Phramer\Interfaces\ControllerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class NewPayloadHandler extends AbstractController implements ControllerInterface {
+class ControllerNamedAnything extends AbstractController implements ControllerInterface {
 
     private $token;
-    private $payloadPath;
 
     /**
      * GetPayloadsController constructor.
@@ -23,19 +23,16 @@ class NewPayloadHandler extends AbstractController implements ControllerInterfac
     public function __construct(array $params)
     {
         parent::__construct($params);
-        $this->token       = isset($this->params['token']) ? $this->params['token'] : null;
-        $this->payloadPath = __DIR__ . '/../../payloads';
+        $this->token = isset($this->params['token']) ? $this->params['token'] : null;
     }
+
 
     public function handleRequest(Request $request)
     {
-
-        $this->json([
-            'success' => TRUE,
-            'token'   => $this->token,
-            'data'    => $request->request->get('data'),
+        $this->renderTemplate('by-controller', [
+            'time'  => time(),
+            'token' => $this->token,
         ]);
-
     }
 
 }

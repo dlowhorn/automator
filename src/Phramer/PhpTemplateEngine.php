@@ -6,8 +6,10 @@
  * Time: 3:50 PM
  */
 
-namespace Server\Framework;
+namespace Phramer;
 
+
+use Phramer\Interfaces\TemplateEngineInterface;
 
 class PhpTemplateEngine implements TemplateEngineInterface {
 
@@ -18,7 +20,7 @@ class PhpTemplateEngine implements TemplateEngineInterface {
     {
         ob_start();
         extract($parameters);
-        $path = __DIR__ . '/../View/' . $file . '.php';
+        $path = __DIR__ . '/View/' . $file . '.php';
         include $path;
 
         return ob_get_clean();

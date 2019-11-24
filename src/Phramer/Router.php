@@ -6,11 +6,12 @@
  * Time: 3:14 PM
  */
 
-namespace Server\Framework;
-
+namespace Phramer;
+use Phramer\Interfaces\RouterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing;
-use Server\Controller\ControllerInterface;
+use Phramer\Interfaces\ControllerInterface;
+use Phramer\Interfaces\TemplateEngineInterface;
 
 class Router implements RouterInterface {
 
@@ -54,7 +55,7 @@ class Router implements RouterInterface {
     public function mapRouteNameToController($routeName, $parameters) : ControllerInterface
     {
 
-        $controllerClassName = $this->explicitRouteControllers[$routeName] ? : 'Server\\Controller\\' . str_replace(' ', '', ucwords(str_replace('-', ' ', $routeName))) . 'Controller';
+        $controllerClassName = $this->explicitRouteControllers[$routeName] ? : 'Phramer\\Controller\\' . str_replace(' ', '', ucwords(str_replace('-', ' ', $routeName))) . 'Controller';
 
         /** @var ControllerInterface $controller */
         $controller = new $controllerClassName($parameters);

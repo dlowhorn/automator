@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../public/../../../vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-use Server\Framework\App;
+use Phramer\App;
 
 try {
 

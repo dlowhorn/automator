@@ -10,14 +10,14 @@
         }
     ],
     "require": {
+        "php" : ">=7.2",
         "ext-json": "*",
         "symfony/routing": "^4.3",
         "symfony/http-foundation": "^4.3"
     },
     "autoload": {
         "psr-4": {
-            "Server\\": "app/Server/src",
-            "Client\\": "app/Client/src",
+            "Phramer\\": "src/Phramer",
             "Vendor\\Namespace\\": ""
         }
     }
