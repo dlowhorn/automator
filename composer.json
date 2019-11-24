@@ -8,5 +8,17 @@
             "name": "Daniel Lowhorn",
             "email": "daniel.ltwp@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "ext-json": "*",
+        "symfony/routing": "^4.3",
+        "symfony/http-foundation": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Server\\": "app/Server/src",
+            "Client\\": "app/Client/src",
+            "Vendor\\Namespace\\": ""
+        }
+    }
 }
